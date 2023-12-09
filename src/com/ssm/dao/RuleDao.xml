@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.RuleDao">
+	<select id="selectAllRule" resultType="rule">
+		select * from rule
+	</select>
+	
+	<select id="selectByRid" parameterType="int" resultType="rule">
+		select * from rule where rid=#{rid}
+	</select>
+	
+	<select id="selectByRaction" parameterType="string" resultType="rule">
+		select * from rule where raction=#{raction}
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.StationDao">
+	<select id="selectALLStation" resultType="station">
+		select * from station
+	</select>
+	
+	<insert id="insertStation" parameterType="station">
+		insert into station values(null,#{sname},#{sprice},#{sbackup})
+	</insert>
+	
+	<update id="updateStation" parameterType="station">
+		update station 
+		set sname=#{sname},sprice=#{sprice},sbackup=#{sbackup}
+		where sid=#{sid}
+	</update>
+	
+	<delete id="deleteStation" parameterType="int">
+		delete from station 
+		where sid=#{sid}
+	</delete>
+	
+	<select id="selectStationBySname" parameterType="string" resultType="station">
+		select * from station where sname=#{sname}
+	</select>
+	
+	<select id="selectStationBySid" parameterType="int" resultType="station">
+		select * from station where sid=#{sid}
+	</select>
+	
+	 <select id="selectStationsBySname" parameterType="string" resultType="station">
+		select * from station 
+		<where>
+			<if test="value != null and value != ''">
+				sname like '%${value}%'
+			</if>
+		</where>
+	
+	</select> 
+	
+	<select id="sumMoney" resultType="int">
+		select sum(sprice) from station where sid between #{param1} and #{param2}
+	</select>
+</mapper>

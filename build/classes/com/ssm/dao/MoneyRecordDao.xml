@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.MoneyRecordDao">
+	<select id="selectAll" resultType="moneyrecord">
+		select * from moneyrecord
+	</select>
+	
+	<insert id="insertMoneyRe" parameterType="moneyrecord">
+		insert into moneyrecord
+		values(null,#{did},#{mmoney},#{mtype},now())
+	</insert>
+</mapper>

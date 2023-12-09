@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.FeeRecordDao">
+<insert id="insertFee" parameterType="FeeRecord">
+	insert into FeeRecord(fid,beginid,cid,fstate) values(null,#{beginid},#{cid},1)
+</insert>
+
+<select id="selectAll" resultType="FeeRecord">
+	select * from FeeRecord 
+</select>
+
+<select id="selectOneByfid" parameterType="int" resultType="FeeRecord">
+	select * from FeeRecord 
+	where fid=#{fid}
+</select>
+
+<update id="updateFee" parameterType="FeeRecord">
+	update FeeRecord
+	set endid=#{endid},fprice=#{fprice},fstate=0
+	where fid=#{fid}
+</update>
+<!-- <select id="selectNotIn"  resultType="FeeRecord">
+		select * from feerecord where fstate = 1
+	</select> -->
+</mapper>
